@@ -5,7 +5,8 @@ module Webpacker
   class WebpackRunner < Webpacker::Runner
     def run
       env = Webpacker::Compiler.env
-
+      $stderr.puts "*"*100
+      $stderr.puts env
       cmd = if node_modules_bin_exist?
         ["#{@node_modules_bin_path}/webpack"]
       else
@@ -18,6 +19,7 @@ module Webpacker
       end
 
       cmd += ["--config", @webpack_config] + @argv
+      $stderr.puts cmd.join(" ")
 
       Dir.chdir(@app_path) do
         Kernel.exec env, *cmd

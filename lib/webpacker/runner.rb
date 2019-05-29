@@ -11,7 +11,8 @@ module Webpacker
 
       $stderr.puts "*"*100
       @app_path              = File.expand_path(".", Dir.pwd)
-      $stderr.puts @app_path
+      $stderr.puts `npm bin`
+      $stderr.puts ENV["WEBPACKER_NODE_MODULES_BIN_PATH"]
       @node_modules_bin_path = ENV["WEBPACKER_NODE_MODULES_BIN_PATH"] || `yarn bin`.chomp
       $stderr.puts @node_modules_bin_path
       @webpack_config        = File.join(@app_path, "config/webpack/#{ENV["NODE_ENV"]}.js")
