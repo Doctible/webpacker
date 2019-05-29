@@ -6,7 +6,7 @@ module Webpacker
     def run
       env = Webpacker::Compiler.env
       $stderr.puts "*"*100
-      $stderr.puts env
+      $stderr.puts `ls #{@node_modules_bin_path}`
       cmd = if node_modules_bin_exist?
         ["#{@node_modules_bin_path}/webpack"]
       else
