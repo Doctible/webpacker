@@ -64,7 +64,9 @@ class Webpacker::Compiler
         "#{RbConfig.ruby} ./bin/webpack",
         chdir: File.expand_path(config.root_path)
       )
-
+      logger.info stderr
+      logger.info "*"*100
+      logger.info stdout
       if status.success?
         logger.info "Compiled all packs in #{config.public_output_path}"
         logger.error "#{stderr}" unless stderr.empty?
